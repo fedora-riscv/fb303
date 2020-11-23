@@ -16,7 +16,6 @@
 %else
 %bcond_with static
 %endif
-%bcond_without static
 
 %global _static_builddir static_build
 
