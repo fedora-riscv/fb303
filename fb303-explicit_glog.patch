@@ -1,0 +1,25 @@
+From 05368003379fe1479a393d21d5f2c848eb5e7490 Mon Sep 17 00:00:00 2001
+From: Michel Alexandre Salim <michel@michel-slm.name>
+Date: Mon, 30 Nov 2020 16:07:04 -0800
+Subject: [PATCH] QuantileStatMap.h: include glog/logging.h
+
+Signed-off-by: Michel Alexandre Salim <michel@michel-slm.name>
+---
+ fb303/detail/QuantileStatMap.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fb303/detail/QuantileStatMap.h b/fb303/detail/QuantileStatMap.h
+index 66e1e07..a9c9150 100644
+--- a/fb303/detail/QuantileStatMap.h
++++ b/fb303/detail/QuantileStatMap.h
+@@ -21,6 +21,7 @@
+ #include <vector>
+ 
+ #include <gflags/gflags.h>
++#include <glog/logging.h>
+ 
+ #include <folly/Optional.h>
+ #include <folly/SharedMutex.h>
+-- 
+2.28.0
+

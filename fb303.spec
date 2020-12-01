@@ -1,10 +1,11 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the last fb303 commit prior to that date
-%global commit 94cac88cf8be1636727727591891b903a1dbdcb5
-%global date 20201123
+%global commit 2b3b110f2b8c27f70ba0fe1e81b0213cae62bc0a
+%global date 20201130
 
-%forgemeta -i
+# add -i for outputting more info
+%forgemeta
 
 # need to figure out how to get the Python bindings to build later
 %bcond_with python
@@ -27,6 +28,7 @@ Summary:        Base Thrift service and a common set of functionality
 License:        ASL 2.0
 URL:            %{forgeurl}
 Source0:        %{forgesource}
+Patch0:         %{name}-explicit_glog.patch
 
 # Folly is known not to work on big-endian CPUs
 ExcludeArch:    s390x
@@ -141,5 +143,8 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Nov 30 14:54:10 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201130git2b3b110
+- Update to snapshot from 20201130
+
 * Mon Nov 23 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201123git94cac88
 - Initial package
