@@ -28,7 +28,6 @@ Summary:        Base Thrift service and a common set of functionality
 License:        ASL 2.0
 URL:            %{forgeurl}
 Source0:        %{forgesource}
-Patch0:         %{name}-explicit_glog.patch
 
 # Folly is known not to work on big-endian CPUs
 ExcludeArch:    s390x
