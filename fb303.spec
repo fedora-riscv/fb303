@@ -22,7 +22,7 @@
 
 Name:           fb303
 Version:        0
-Release:        0.2%{?dist}
+Release:        0.3%{?dist}
 Summary:        Base Thrift service and a common set of functionality
 
 License:        ASL 2.0
@@ -142,6 +142,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Fri Jan 22 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.2
 - Rebuilt for Boost 1.75
 
