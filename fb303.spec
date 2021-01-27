@@ -22,7 +22,7 @@
 
 Name:           fb303
 Version:        0
-Release:        0.1%{?dist}
+Release:        0.3%{?dist}
 Summary:        Base Thrift service and a common set of functionality
 
 License:        ASL 2.0
