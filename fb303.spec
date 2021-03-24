@@ -1,8 +1,8 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the first "Updating submodules" commit from that day
-%global commit 042a0d3d824c9925a3c6e1eb34ec4b7b09adc179
-%global date 20210314
+%global commit 90a5e0c9e780815c308e19eb617e96552dc9928d
+%global date 20210322
 
 # add -i for outputting more info
 %forgemeta
@@ -142,6 +142,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Mar 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210322git90a5e0c
+- Update to snapshot from 20210322
+
 * Mon Mar 15 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210314git042a0d3
 - Update to snapshot from 20210314
 
