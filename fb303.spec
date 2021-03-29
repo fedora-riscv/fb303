@@ -1,8 +1,8 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the first "Updating submodules" commit from that day
-%global commit 90a5e0c9e780815c308e19eb617e96552dc9928d
-%global date 20210322
+%global commit bf56c7aebe721755300bf48d17d5f98e935162e2
+%global date 20210329
 
 # add -i for outputting more info
 %forgemeta
@@ -142,6 +142,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Mar 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.0-3.20210329gitbf56c7a
+- Update to snapshot from 20210329
+
 * Wed Mar 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210322git90a5e0c
 - Update to snapshot from 20210322
 
@@ -154,10 +157,10 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 * Tue Jan 26 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20210125git7b67e06
 - Update to snapshot from 20210125
 
-* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.3
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.3.20201228git7700913
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
-* Fri Jan 22 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.2
+* Fri Jan 22 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.2.20201228git7700913
 - Rebuilt for Boost 1.75
 
 * Tue Dec 29 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201228git7700913
