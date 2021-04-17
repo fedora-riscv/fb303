@@ -1,11 +1,9 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the first "Updating submodules" commit from that day
-%global commit bf56c7aebe721755300bf48d17d5f98e935162e2
-%global date 20210329
-
-# add -i for outputting more info
-%forgemeta
+%global commit 9066fd258e51c8a567e2af6d992e3486026b9ea3
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global date 20210412
 
 # need to figure out how to get the Python bindings to build later
 %bcond_with python
@@ -22,12 +20,12 @@
 
 Name:           fb303
 Version:        0
-Release:        0.3%{?dist}
+Release:        0.3.%{date}git%{shortcommit}%{?dist}
 Summary:        Base Thrift service and a common set of functionality
 
 License:        ASL 2.0
 URL:            %{forgeurl}
-Source0:        %{forgesource}
+Source0:        %{url}/archive/%{commit}/%{name}-%{commit}.tar.gz
 
 # Folly is known not to work on big-endian CPUs
 ExcludeArch:    s390x
@@ -142,6 +140,10 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210412git9066fd2
+- Update to snapshot from 20210412
+- Stop using forge macros in case we want to build for EPEL8
+
 * Mon Mar 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.0-3.20210329gitbf56c7a
 - Update to snapshot from 20210329
 
