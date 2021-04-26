@@ -1,9 +1,9 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the first "Updating submodules" commit from that day
-%global commit 9066fd258e51c8a567e2af6d992e3486026b9ea3
+%global commit 3843360a20d4acd9af5f7b304810873b0e12042e
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global date 20210412
+%global date 20210426
 
 # need to figure out how to get the Python bindings to build later
 %bcond_with python
@@ -140,6 +140,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Apr 26 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210426git3843360
+- Update to snapshot from 20210426
+
 * Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210412git9066fd2
 - Update to snapshot from 20210412
 - Stop using forge macros in case we want to build for EPEL8
