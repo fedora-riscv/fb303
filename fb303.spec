@@ -1,9 +1,9 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the first "Updating submodules" commit from that day
-%global commit 5b6063051bb293cc4fcca644c46468f6fdd64802
+%global commit a4d35c761ca56899831e103b3bdcd7d9cb5695fe
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global date 20210722
+%global date 20211115
 
 # need to figure out how to get the Python bindings to build later
 %bcond_with python
@@ -140,6 +140,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Fri Nov 19 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.6.20211115gita4d35c7
+- Update to snapshot from 20211115
+
 * Fri Aug 06 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.6.20210722git5b60630
 - Rebuilt for Boost 1.76
 
