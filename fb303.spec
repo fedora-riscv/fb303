@@ -1,20 +1,23 @@
 %global forgeurl https://github.com/facebook/fb303/
 # take the date fbthrift is tagged
 # and use the first "Updating submodules" commit from that day
-%global commit 5b6063051bb293cc4fcca644c46468f6fdd64802
+%global commit bd92ca817da526f9b57faa6b0f70445c80a6318f
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global date 20210722
+%global date 20211220
 
 # need to figure out how to get the Python bindings to build later
 %bcond_with python
 
 ## Depends on fizz, which has linking issues on some platforms:
 # https://bugzilla.redhat.com/show_bug.cgi?id=1893332
-%ifarch i686 x86_64
+%ifarch %ix86 x86_64
 %bcond_without static
 %else
 %bcond_with static
 %endif
+
+# No tests were found!!!
+%bcond_with tests
 
 %global _static_builddir static_build
 
@@ -42,11 +45,12 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-fbthrift-devel
 %endif
 BuildRequires:  wangle-devel
-#Requires:
 
-%description
+%global _description %{expand:
 fb303 is a base Thrift service and a common set of functionality for querying
-stats, options, and other information from a service.
+stats, options, and other information from a service.}
+
+%description %{_description}
 
 
 %package        devel
@@ -54,7 +58,8 @@ Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       cmake-filesystem
 
-%description    devel
+%description    devel %{_description}
+
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -68,14 +73,14 @@ BuildRequires:  folly-static
 BuildRequires:  wangle-static
 Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
 
-%description    static
+%description    static %{_description}
+
 The %{name}-static package contains static libraries for
 developing applications that use %{name}.
 %endif
 
 
 %prep
-# forgesetup doesn't take patches
 %autosetup -n %{name}-%{commit} -p1
 
 
@@ -118,7 +123,14 @@ popd
 
 %cmake_install
 
+
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+
+
+%if %{with tests}
+%check
+%ctest
+%endif
 
 
 %files
@@ -140,60 +152,4 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
-* Fri Aug 06 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.6.20210722git5b60630
-- Rebuilt for Boost 1.76
-
-* Thu Jul 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.5-20210722git5b60630
-- Update to snapshot from 20210722
-
-* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.20210628git8ef9085
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Mon Jul 12 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.4.20210628git8ef9085
-- Update to snapshot from 20210628
-
-* Mon Jul 05 2021 Richard Shaw <hobbes1069@gmail.com> - 0-0.4.20210510git74978e1
-- Rebuild for new fmt version.
-
-* Mon May 10 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210510git74978e1
-- Update to snapshot from 20210510
-
-* Mon Apr 26 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210426git3843360
-- Update to snapshot from 20210426
-
-* Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210412git9066fd2
-- Update to snapshot from 20210412
-- Stop using forge macros in case we want to build for EPEL8
-
-* Mon Mar 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.0-3.20210329gitbf56c7a
-- Update to snapshot from 20210329
-
-* Wed Mar 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210322git90a5e0c
-- Update to snapshot from 20210322
-
-* Mon Mar 15 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210314git042a0d3
-- Update to snapshot from 20210314
-
-* Wed Feb  3 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210201git72505c4
-- Update to snapshot from 20210201
-
-* Tue Jan 26 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20210125git7b67e06
-- Update to snapshot from 20210125
-
-* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.3.20201228git7700913
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Fri Jan 22 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.2.20201228git7700913
-- Rebuilt for Boost 1.75
-
-* Tue Dec 29 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201228git7700913
-- Update to snapshot from 20201228
-
-* Tue Dec 22 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201221git96ae845
-- Update to snapshot from 20201221
-
-* Mon Nov 30 14:54:10 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201130git2b3b110
-- Update to snapshot from 20201130
-
-* Mon Nov 23 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201123git94cac88
-- Initial package
+%autochangelog

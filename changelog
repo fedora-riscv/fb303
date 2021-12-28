@@ -1,0 +1,61 @@
+* Fri Dec 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.6.20211220gitbd92ca8
+- Update to snapshot from 20211220
+- Opt in to rpmautospec (changelog only)
+
+* Fri Aug 06 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.6.20210722git5b60630
+- Rebuilt for Boost 1.76
+
+* Thu Jul 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.5-20210722git5b60630
+- Update to snapshot from 20210722
+
+* Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.5.20210628git8ef9085
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jul 12 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.4.20210628git8ef9085
+- Update to snapshot from 20210628
+
+* Mon Jul 05 2021 Richard Shaw <hobbes1069@gmail.com> - 0-0.4.20210510git74978e1
+- Rebuild for new fmt version.
+
+* Mon May 10 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210510git74978e1
+- Update to snapshot from 20210510
+
+* Mon Apr 26 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210426git3843360
+- Update to snapshot from 20210426
+
+* Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210412git9066fd2
+- Update to snapshot from 20210412
+- Stop using forge macros in case we want to build for EPEL8
+
+* Mon Mar 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0.0-3.20210329gitbf56c7a
+- Update to snapshot from 20210329
+
+* Wed Mar 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210322git90a5e0c
+- Update to snapshot from 20210322
+
+* Mon Mar 15 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210314git042a0d3
+- Update to snapshot from 20210314
+
+* Wed Feb  3 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.3.20210201git72505c4
+- Update to snapshot from 20210201
+
+* Tue Jan 26 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20210125git7b67e06
+- Update to snapshot from 20210125
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0-0.3.20201228git7700913
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Fri Jan 22 2021 Jonathan Wakely <jwakely@redhat.com> - 0-0.2.20201228git7700913
+- Rebuilt for Boost 1.75
+
+* Tue Dec 29 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201228git7700913
+- Update to snapshot from 20201228
+
+* Tue Dec 22 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201221git96ae845
+- Update to snapshot from 20201221
+
+* Mon Nov 30 14:54:10 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201130git2b3b110
+- Update to snapshot from 20201130
+
+* Mon Nov 23 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 0-0.1.20201123git94cac88
+- Initial package
