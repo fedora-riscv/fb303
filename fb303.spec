@@ -1,9 +1,4 @@
 %global forgeurl https://github.com/facebook/fb303/
-# take the date fbthrift is tagged
-# and use the first "Updating submodules" commit from that day
-%global commit fd133d97ac002c72cbb115abe4a92c474b337a11
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global date 20220221
 
 # need to figure out how to get the Python bindings to build later
 %bcond_with python
@@ -12,13 +7,13 @@
 %bcond_with check
 
 Name:           fb303
-Version:        0^%{date}git%{shortcommit}
+Version:        2022.02.21.00
 Release:        %autorelease
 Summary:        Base Thrift service and a common set of functionality
 
 License:        ASL 2.0
 URL:            %{forgeurl}
-Source0:        %{url}/archive/%{commit}/%{name}-%{commit}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 # Folly is known not to work on big-endian CPUs
 ExcludeArch:    s390x
@@ -56,14 +51,14 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -n %{name}-%{commit} -p1
+%autosetup -p1
 
 
 %build
 %cmake \
   -DBUILD_SHARED_LIBS=ON \
   -DCMAKE_INSTALL_DIR=%{_libdir}/cmake/%{name} \
-  -DPACKAGE_VERSION=0.%{date} \
+  -DPACKAGE_VERSION=%{version} \
 %if %{with python}
   -DPYTHON_EXTENSIONS=ON
 %else
