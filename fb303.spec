@@ -7,7 +7,7 @@
 %bcond_with check
 
 Name:           fb303
-Version:        2022.02.21.00
+Version:        2022.02.28.00
 Release:        %autorelease
 Summary:        Base Thrift service and a common set of functionality
 
@@ -69,7 +69,6 @@ developing applications that use %{name}.
 
 %install
 %cmake_install
-# find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %if %{with check}
@@ -81,7 +80,7 @@ developing applications that use %{name}.
 %files
 %license LICENSE
 %doc README.md
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{version}
 
 %files devel
 %doc CODE_OF_CONDUCT.md CONTRIBUTING.md
