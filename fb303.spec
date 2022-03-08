@@ -1,3 +1,14 @@
+%if 0%{?fedora} >= 36
+# Folly is compiled with Clang
+%bcond_without toolchain_clang
+%else
+%bcond_with toolchain_clang
+%endif
+
+%if %{with toolchain_clang}
+%global toolchain clang
+%endif
+
 %global forgeurl https://github.com/facebook/fb303/
 
 # need to figure out how to get the Python bindings to build later
@@ -7,7 +18,7 @@
 %bcond_with check
 
 Name:           fb303
-Version:        2022.02.28.00
+Version:        2022.03.07.00
 Release:        %autorelease
 Summary:        Base Thrift service and a common set of functionality
 
@@ -17,9 +28,17 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 # Folly is known not to work on big-endian CPUs
 ExcludeArch:    s390x
+%if 0%{?fedora} >= 36
+# fmt code breaks: https://bugzilla.redhat.com/show_bug.cgi?id=2061022
+ExcludeArch:    ppc64le
+%endif
 
 BuildRequires:  cmake
+%if %{with toolchain_clang}
+BuildRequires:  clang
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  fbthrift-devel
 BuildRequires:  fizz-devel
 BuildRequires:  folly-devel
