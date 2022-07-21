@@ -1,9 +1,4 @@
-%if 0%{?fedora} == 36
-# Folly is compiled with Clang
-%bcond_without toolchain_clang
-%else
 %bcond_with toolchain_clang
-%endif
 
 %if %{with toolchain_clang}
 %global toolchain clang
@@ -15,10 +10,10 @@
 %bcond_with python
 
 # No tests were found!!!
-%bcond_with check
+%bcond_without check
 
 Name:           fb303
-Version:        2022.03.14.00
+Version:        2022.07.11.00
 Release:        %autorelease
 Summary:        Base Thrift service and a common set of functionality
 
@@ -26,12 +21,7 @@ License:        ASL 2.0
 URL:            %{forgeurl}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-# Folly is known not to work on big-endian CPUs
-ExcludeArch:    s390x
-%if 0%{?fedora} == 36
-# fmt code breaks: https://bugzilla.redhat.com/show_bug.cgi?id=2061022
-ExcludeArch:    ppc64le
-%endif
+ExclusiveArch:  x86_64 aarch64 ppc64le
 
 BuildRequires:  cmake
 %if %{with toolchain_clang}
