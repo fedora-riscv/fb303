@@ -14,14 +14,14 @@
 
 Name:           fb303
 Version:        2023.10.16.00
-Release:        %autorelease
+Release:        %autorelease -e rv64
 Summary:        Base Thrift service and a common set of functionality
 
 License:        Apache-2.0
 URL:            %{forgeurl}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 
 BuildRequires:  cmake
 %if %{with toolchain_clang}
